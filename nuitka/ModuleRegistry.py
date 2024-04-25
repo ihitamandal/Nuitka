@@ -166,7 +166,7 @@ def nextModule():
 
 
 def getRemainingModulesCount():
-    return len(active_modules)
+    return active_modules.__len__()
 
 
 def getDoneModulesCount():
