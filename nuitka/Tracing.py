@@ -360,7 +360,7 @@ class OurLogger(object):
         self.sysexit("FATAL:" + repr(exception), exit_code=exit_code, reporting=True)
 
     def isQuiet(self):
-        return is_quiet or self.is_quiet
+        return self.is_quiet  # is_quiet is certainly undeclared and probably a typo
 
     def info(self, message, style=None, mnemonic=None, prefix=None, keep_format=False):
         if not self.isQuiet():
