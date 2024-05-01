@@ -172,15 +172,14 @@ def closeProgressBar():
     Returns: int or None - if displayed, the total used last time.
     """
 
-    if Tracing.progress is not None:
-        # Retrieve that previous total, for repeated progress bars, it
-        # can be used as a new minimum.
-        result = Tracing.progress.total
+    if not Tracing.progress:
+        return
 
-        Tracing.progress.close()
-        Tracing.progress = None
+    result = Tracing.progress.total
+    Tracing.progress.close()
+    Tracing.progress = None
 
-        return result
+    return result
 
 
 def wrapWithProgressBar(iterable, stage, unit):
