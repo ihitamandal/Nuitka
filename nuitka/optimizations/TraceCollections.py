@@ -1124,11 +1124,10 @@ class TraceCollectionModule(CollectionStartPointMixin, TraceCollectionBase):
         return self.very_trusted_module_variables
 
     def updateVeryTrustedModuleVariables(self, very_trusted_module_variables):
-        result = self.very_trusted_module_variables != very_trusted_module_variables
-
-        self.very_trusted_module_variables = very_trusted_module_variables
-
-        return result
+        if self.very_trusted_module_variables != very_trusted_module_variables:
+            self.very_trusted_module_variables = very_trusted_module_variables
+            return True
+        return False
 
     def getModuleUsageAttempts(self):
         return self.module_usage_attempts
