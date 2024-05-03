@@ -172,14 +172,11 @@ def closeProgressBar():
     Returns: int or None - if displayed, the total used last time.
     """
 
-    if Tracing.progress is not None:
-        # Retrieve that previous total, for repeated progress bars, it
-        # can be used as a new minimum.
-        result = Tracing.progress.total
-
-        Tracing.progress.close()
+    progress = Tracing.progress
+    if progress is not None:
+        result = progress.total
+        progress.close()
         Tracing.progress = None
-
         return result
 
 
